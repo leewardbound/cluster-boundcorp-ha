@@ -58,9 +58,8 @@ spec:
         ingressClassName: "nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.ha.${SECRET_DOMAIN}"
-          external-dns/is-public: "true"
         hosts:
-          - host: "vault.ha.${SECRET_DOMAIN}"
+          - host: "vault-ha.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
@@ -76,7 +75,7 @@ spec:
                   port: *websocket-port
         tls:
           - hosts:
-              - "vault.ha.${SECRET_DOMAIN}"
+              - "vault-ha.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true

@@ -8,7 +8,7 @@ spec:
   interval: 30m
   ref:
     branch: main
-  url: "${BOOTSTRAP_GIT_REPOSITORY}"
+  url: "https://github.com/leewardbound/cluster-boundcorp-ha"
   ignore: |
     # exclude all
     /*

@@ -3,7 +3,6 @@ version: "3"
 
 vars:
   KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
-  ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible"
 
 dotenv: [".config.env"]
 
@@ -12,9 +11,9 @@ env:
   SOPS_AGE_KEY_FILE: ~/.config/sops/age/keys.txt
 
 includes:
-  ansible: .taskfiles/AnsibleTasks.yml
   cluster: .taskfiles/ClusterTasks.yml
   precommit: .taskfiles/PrecommitTasks.yml
+  sops: .taskfiles/sops.yml
 
 tasks:
   init:

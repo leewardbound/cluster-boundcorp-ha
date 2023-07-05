@@ -29,11 +29,16 @@ spec:
     fullnameOverride: *app
     provider: cloudflare
     env:
-      - name: CF_API_TOKEN
+      - name: CF_API_KEY
         valueFrom:
           secretKeyRef:
             name: external-dns-secret
-            key: api-token
+            key: api-key
+      - name: CF_API_EMAIL
+        valueFrom:
+          secretKeyRef:
+            name: external-dns-secret
+            key: email
     extraArgs:
       - --annotation-filter=external-dns.alpha.kubernetes.io/target
       - --cloudflare-proxied
@@ -42,7 +47,7 @@ spec:
     policy: sync
     sources: ["crd", "ingress"]
     txtPrefix: k8s.
-    txtOwnerId: default
+    txtOwnerId: cluster-haha
     domainFilters: ["${SECRET_DOMAIN}"]
     serviceMonitor:
       enabled: true

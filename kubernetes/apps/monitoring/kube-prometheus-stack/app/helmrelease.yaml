@@ -85,8 +85,7 @@ spec:
             action: drop
     kubeControllerManager:
       enabled: true
-      endpoints: &cp
-        - 127.0.0.1 # Replaced by configure
+      endpoints: &cp []
       serviceMonitor:
         metricRelabelings:
           # Remove duplicate metrics

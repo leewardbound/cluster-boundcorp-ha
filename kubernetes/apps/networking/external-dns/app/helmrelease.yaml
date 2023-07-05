@@ -41,7 +41,6 @@ spec:
             key: email
     extraArgs:
       - --annotation-filter=external-dns.alpha.kubernetes.io/target
-      - --cloudflare-proxied
       - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
       - --crd-source-kind=DNSEndpoint
     policy: sync

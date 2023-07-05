@@ -55,7 +55,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "nginx-public"
+        ingressClassName: "nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.ha.${SECRET_DOMAIN}"
           external-dns/is-public: "true"

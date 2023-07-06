@@ -56,7 +56,7 @@ spec:
         limits:
           memory: 3000Mi
           cpu: null
-    schedules:
+    schedules-disabled:
       daily-backup:
         schedule: 0 6 * * *
         template:
@@ -76,5 +76,5 @@ spec:
 
   valuesFrom:
     - kind: Secret
-      name: s3-eu-north-1
+      name: s3-eu-north-1-ctrl
       optional: false

@@ -5,3 +5,4 @@ resources:
   - _namespace.yaml
   - helm-release.yaml
   - secret-s3-eu-north-1.sops.yaml
+  - secret-s3-eu-north-1-ctrl.sops.yaml

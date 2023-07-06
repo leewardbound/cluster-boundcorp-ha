@@ -5,8 +5,6 @@ metadata:
   name: vaultwarden-data
   namespace: vaultwarden
 spec:
-  accessModes:
-    - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi

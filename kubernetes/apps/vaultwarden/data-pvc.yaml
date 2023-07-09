@@ -5,6 +5,7 @@ metadata:
   name: vaultwarden-data
   namespace: vaultwarden
 spec:
+  storageClassName: linode-block-storage-retain
   resources:
     requests:
       storage: 5Gi

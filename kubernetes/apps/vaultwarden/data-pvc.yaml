@@ -6,6 +6,8 @@ metadata:
   namespace: vaultwarden
 spec:
   storageClassName: linode-block-storage-retain
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi

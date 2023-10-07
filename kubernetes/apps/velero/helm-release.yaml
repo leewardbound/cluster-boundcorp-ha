@@ -22,7 +22,7 @@ spec:
   values:
     image:
       repository: velero/velero
-      tag: v1.11.1
+      tag: v1.12.0
       resticTimeout: 6h
     initContainers:
       - name: velero-plugin-for-aws

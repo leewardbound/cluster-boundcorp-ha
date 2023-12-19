@@ -8,7 +8,28 @@ spec:
   trigger:
     manual: restore-once
   restic:
-    repository: vaultwarden-restic-source
-    # Use an existing PVC, don't provision a new one
-    destinationPVC: vaultwarden-data
+    repository: vaultwarden-restic-target
+    accessModes:
+      - ReadWriteOnce
+    capacity: 10Gi
+    storageClassName: ceph-block
     copyMethod: Direct
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: restore-ctrl-vaultwarden
+  namespace: vaultwarden
+spec:
+  containers:
+    - name: mount-restore
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do sleep 30; done"]
+      volumeMounts:
+        - name: restore-ctrl-vaultwarden
+          mountPath: /restore
+  volumes:
+    - name: restore-ctrl-vaultwarden
+      persistentVolumeClaim:
+        claimName: volsync-restore-ctrl-vaultwarden-dest

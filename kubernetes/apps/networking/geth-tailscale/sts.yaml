@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tailscale
+spec:
+  serviceName: "tailscale"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tailscale
+  template:
+    metadata:
+      labels:
+        app: tailscale
+    spec:
+      hostNetwork: true
+      containers:
+        - name: tailscale
+          image: tailscale/tailscale
+          ports:
+            - containerPort: 30303
+          volumeMounts:
+            - name: varlib
+              mountPath: /var/lib
+            - name: devnet
+              mountPath: /dev/net/tun
+          env:
+            - name: TS_AUTHKEY
+              value: "tskey-auth-kvFQpC3CNTRL-m2sKTZ3Yj42bZjG5reBa42GNKYHbQbu2"
+            - name: TS_HOSTNAME
+              value: tailscale-relay-haha-geth
+      volumes:
+        - name: varlib
+          hostPath:
+            path: /var/lib
+        - name: devnet
+          hostPath:
+            path: /dev/net/tun
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tailscale
+spec:
+  selector:
+    app: tailscale
+  ports:
+    - protocol: TCP
+      port: 30303
+      targetPort: 30303

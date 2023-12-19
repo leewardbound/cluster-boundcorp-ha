@@ -27,7 +27,7 @@ spec:
               mountPath: /dev/net/tun
           env:
             - name: TS_AUTHKEY
-              value: "tskey-auth-kvFQpC3CNTRL-m2sKTZ3Yj42bZjG5reBa42GNKYHbQbu2"
+              value: "${SECRET_TAILSCALE_AUTH_KEY}"
             - name: TS_HOSTNAME
               value: tailscale-relay-haha-geth
       volumes:
